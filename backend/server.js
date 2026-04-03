@@ -396,12 +396,20 @@ app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
-const PORT = process.env.PORT || 3000;
+// ============================================================
+// SERVER START (OR EXPORT)
+// ============================================================
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', environment: IS_VERCEL ? 'vercel' : 'local' });
+});
+
 if (!IS_VERCEL) {
+  const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
-  console.log(`\n🛡️  SafePay4U AI Chatbot running at http://localhost:${PORT}`);
-  console.log(`📧 Contact: info@safepay4u.com | 📞 786-357-1224`);
-  console.log(`\n${process.env.OPENAI_API_KEY ? '✅ OpenAI key detected' : '❌ WARNING: OPENAI_API_KEY not set in .env'}\n`);
-});  });
+    console.log(`\n🛡️  SafePay4U AI Chatbot running at http://localhost:${PORT}`);
+    console.log(`📧 Contact: info@safepay4u.com | 📞 786-357-1224`);
+    console.log(`\n${process.env.OPENAI_API_KEY ? '✅ OpenAI key detected' : '❌ WARNING: OPENAI_API_KEY not set in .env'}\n`);
+  });
 }
+
 module.exports = app;
