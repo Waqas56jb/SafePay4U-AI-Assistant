@@ -390,17 +390,34 @@ app.get('/api/analytics', (req, res) => {
 });
 
 // ============================================================
-// SERVE FRONTEND
+// STATUS & HEALTH
 // ============================================================
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+app.get('/', (req, res) => {
+  res.json({ 
+    message: "SafePay4U Backend AI API is live!", 
+    environment: IS_VERCEL ? 'vercel' : 'local',
+    docs: "Reach out at /api/health for more info."
+  });
+});
+
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'ok', 
+    environment: IS_VERCEL ? 'vercel' : 'local',
+    timestamp: new Date().toISOString()
+  });
 });
 
 // ============================================================
-// SERVER START (OR EXPORT)
+// SERVE FRONTEND (AS FALLBACK)
 // ============================================================
-app.get('/api/health', (req, res) => {
-  res.status(200).json({ status: 'ok', environment: IS_VERCEL ? 'vercel' : 'local' });
+app.get(/.*/, (req, res) => {
+  const filePath = path.join(__dirname, '../frontend/index.html');
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).json({ error: 'Frontend not found on server' });
+  }
 });
 
 if (!IS_VERCEL) {
