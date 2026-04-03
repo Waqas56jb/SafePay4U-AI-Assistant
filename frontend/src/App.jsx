@@ -49,7 +49,7 @@ const App = () => {
       const validHistory = history.filter(m => m.content && m.content.trim() !== '');
       validHistory.push({ role: 'user', content: text });
 
-      const API_BASE = 'https://safe-pay4-u-ai-assistant-1p9c.vercel.app';
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://safe-pay4-u-ai-assistant-e8rl.vercel.app';
       const res = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -11,7 +11,7 @@ const FeeCalculator = ({ onClose }) => {
       return;
     }
 
-    const API_BASE = 'https://safe-pay4-u-ai-assistant-1p9c.vercel.app';
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://safe-pay4-u-ai-assistant-e8rl.vercel.app';
     try {
       const res = await fetch(`${API_BASE}/api/calculate-fee`, {
         method: 'POST',
