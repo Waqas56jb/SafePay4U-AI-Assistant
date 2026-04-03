@@ -157,6 +157,11 @@
         "role": "user",
         "content": "How do I register and get started?",
         "ts": "2026-04-03T20:56:13.446Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Registering with SafePay4U is a simple and straightforward process. Here's how you can get started:\n\n1. **Visit the Registration Page**: Go to safepay4u.com/user/register.\n\n2. **Provide Your Information**:\n   - Enter your username.\n   - Provide your email address.\n   - Select your country.\n   - Enter your mobile number.\n   - Create a secure password.\n\n3. **Agree to Terms**: Ensure you are 18 years or older and agree to our Privacy Policy and Terms & Conditions.\n\n4. **Complete Registration**: Submit the form to create your account.\n\nOnce registered, you'll have access to create and manage escrow transactions securely. If you need any assistance during the registration process, feel free to contact us at info@safepay4u.com or call 786-357-1224. Get started today and experience secure transactions with SafePay4U!",
+        "ts": "2026-04-03T20:56:23.316Z"
       }
     ],
     "startTime": "2026-04-03T20:55:30.952Z",

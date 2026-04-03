@@ -10,7 +10,7 @@ import {
 } from './chatEngine.js';
 import './safepay.css';
 
-const API = typeof window !== 'undefined' ? window.location.origin : '';
+const API = 'https://safe-pay4-u-ai-assistant-1p9c.vercel.app';
 
 function App() {
   // --- Refs ---
