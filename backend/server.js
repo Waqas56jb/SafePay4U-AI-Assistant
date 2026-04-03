@@ -434,7 +434,7 @@ app.get('/api/conversation/:sid', (req, res) => {
   res.json(c);
 });
 
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'index.html')));
+app.get(/.*/, (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'index.html')));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ SafePay4U AI Chatbot → http://localhost:${PORT}`));

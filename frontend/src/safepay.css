@@ -4,6 +4,10 @@
    White #FFFFFF | Light #F4F7FB | Gold accent #F0A500
 ══════════════════════════════════════════════════════════ */
 *{box-sizing:border-box;margin:0;padding:0;}
+html,body,#root{
+  height:100%;
+  margin:0;
+}
 :root{
   --navy:#1B2B4B;
   --navy-dark:#0F1B30;
@@ -29,48 +33,31 @@
 
 body{
   font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  background:#EEF2F8;
-  min-height:100vh;
+  background:var(--light);
+  min-height:100%;
   color:var(--text);
-}
-
-/* ── FAB BUTTON ── */
-#sp-fab{
-  position:fixed;bottom:28px;right:28px;z-index:9999;
-  width:68px;height:68px;border-radius:50%;border:none;cursor:pointer;
-  background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 60%,var(--teal) 100%);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 6px 28px rgba(27,43,75,0.38);
-  transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;
-}
-#sp-fab:hover{transform:scale(1.1);box-shadow:0 10px 36px rgba(27,43,75,0.45);}
-#sp-fab svg{width:30px;height:30px;fill:#fff;}
-#sp-notif{
-  position:absolute;top:-3px;right:-3px;
-  width:22px;height:22px;border-radius:50%;
-  background:var(--gold);color:#fff;
-  font-size:11px;font-weight:800;
-  display:flex;align-items:center;justify-content:center;
-  border:2.5px solid var(--white);
-  animation:notif-pulse 2s ease infinite;
-}
-@keyframes notif-pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(240,165,0,.4);}50%{transform:scale(1.1);box-shadow:0 0 0 6px rgba(240,165,0,0);}}
-
-/* ── MAIN CONTAINER ── */
-#sp-container{
-  position:fixed;bottom:108px;right:28px;z-index:9998;
-  width:420px;height:700px;max-height:calc(100vh - 130px);
-  background:var(--white);
-  border-radius:22px;
-  box-shadow:var(--shadow);
-  display:flex;flex-direction:column;
   overflow:hidden;
-  transform:translateY(24px) scale(0.93);
-  opacity:0;pointer-events:none;
-  transition:all .3s cubic-bezier(.34,1.56,.64,1);
-  border:1px solid rgba(27,43,75,0.08);
 }
-#sp-container.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all;}
+
+/* ── MAIN CONTAINER (full-screen chat) ── */
+#sp-container{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  max-height:none;
+  background:var(--white);
+  border-radius:0;
+  box-shadow:none;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  transform:none;
+  opacity:1;
+  pointer-events:all;
+  border:none;
+}
 
 /* ── HEADER ── */
 #sp-header{
@@ -168,13 +155,13 @@ body{
 .esc-email{background:var(--blue);color:#fff;}
 
 /* ── TAB PANELS ── */
-#panel-chat{display:flex;flex-direction:column;flex:1;overflow:hidden;}
+#panel-chat{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;}
 #panel-analytics{display:none;padding:16px;overflow-y:auto;flex:1;background:var(--light);}
 #panel-leads{display:none;padding:16px;overflow-y:auto;flex:1;background:var(--light);}
 
 /* ── MESSAGES ── */
 #sp-messages{
-  flex:1;overflow-y:auto;padding:16px;
+  flex:1;min-height:0;overflow-y:auto;padding:16px;
   display:flex;flex-direction:column;gap:14px;
   scroll-behavior:smooth;background:var(--light);
 }
@@ -384,6 +371,5 @@ body{
 
 /* ── MOBILE ── */
 @media(max-width:480px){
-  #sp-container{width:calc(100vw - 16px);right:8px;bottom:90px;border-radius:18px;}
-  #sp-fab{right:16px;bottom:16px;width:60px;height:60px;}
+  #sp-messages{padding:12px;}
 }

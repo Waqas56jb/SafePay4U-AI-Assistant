@@ -1,0 +1,19 @@
+{
+  "sp_2x2322lwu_1775248685817": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "hi",
+        "ts": "2026-04-03T20:38:08.327Z"
+      },
+      {
+        "role": "assistant",
+        "content": "Hello! How can I assist you today with SafePay4U's escrow services? Whether you have questions about our process, fees, or need help setting up a transaction, I'm here to help. Feel free to ask anything! You can also visit our website at [safepay4u.com](https://safepay4u.com) for more information.",
+        "ts": "2026-04-03T20:38:14.781Z"
+      }
+    ],
+    "startTime": "2026-04-03T20:38:08.327Z",
+    "lang": "en",
+    "leadInfo": {}
+  }
+}
