@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://safe-pay4-u-ai-assistant-1p9c.vercel.app',
+        target: 'https://safe-pay4-u-ai-assistant-e8rl.vercel.app',
         changeOrigin: true
       }
     }
