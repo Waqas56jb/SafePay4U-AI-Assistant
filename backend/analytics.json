@@ -1,28 +1,8 @@
-{
-  "sessions": {
-    "sp_2x2322lwu_1775248685817": 1,
-    "sp_i8tfmuk7n_1775249043209": 3,
-    "sp_ohxo8glj9_1775249447684": 1,
-    "sp_3vlz82dpv_1775249538503": 1,
-    "sp_6houwcx3b_1775249539038": 1,
-    "sp_vodved0ed_1775249627414": 1,
-    "sp_vwe6pi5eb_1775249682331": 1,
-    "sp_xa0uf6hs2_1775249721664": 4
-  },
-  "intents": {
-    "general": 3,
-    "fees": 2,
-    "about": 3,
-    "how_it_works": 5,
-    "security": 2,
-    "domains": 1,
-    "vehicles": 2,
-    "buyer_protection": 1,
-    "contact": 1,
-    "register": 1
-  },
-  "messages": 13,
-  "languages": {
-    "en": 13
+[
+  {
+    "sessionId": "sp4u_1775252768145_4ive7p0nj",
+    "messageCount": 13,
+    "startTime": "2026-04-03T21:46:12.982Z",
+    "lastActive": "2026-04-03T21:51:24.736Z"
   }
-}
+]
