@@ -220,8 +220,11 @@ function calculateEscrowFee(amount) {
 // ============================================================
 // LEAD STORAGE
 // ============================================================
-const LEADS_FILE = path.join(__dirname, 'leads.json');
-const ANALYTICS_FILE = path.join(__dirname, 'analytics.json');
+const IS_VERCEL = process.env.VERCEL === '1';
+const STORAGE_DIR = IS_VERCEL ? '/tmp' : __dirname;
+
+const LEADS_FILE = path.join(STORAGE_DIR, 'leads.json');
+const ANALYTICS_FILE = path.join(STORAGE_DIR, 'analytics.json');
 
 function loadJSON(file) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return []; }
@@ -394,8 +397,11 @@ app.get(/.*/, (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+if (!IS_VERCEL) {
+  app.listen(PORT, () => {
   console.log(`\n🛡️  SafePay4U AI Chatbot running at http://localhost:${PORT}`);
   console.log(`📧 Contact: info@safepay4u.com | 📞 786-357-1224`);
   console.log(`\n${process.env.OPENAI_API_KEY ? '✅ OpenAI key detected' : '❌ WARNING: OPENAI_API_KEY not set in .env'}\n`);
-});
+});  });
+}
+module.exports = app;
