@@ -41,7 +41,7 @@ export const INPUT_PLACEHOLDERS = {
   es: 'Pregunte sobre tarifas, proceso, transacciones...',
   fr: 'Posez des questions sur les frais, le processus...',
   de: 'Fragen Sie über Gebühren, Prozess...',
-  pt: 'Pergunte sobre taxas, processo...',
+  pt: 'Pergunte sobre taxas, proceso...',
   auto: 'Ask about fees, escrow process, transactions...'
 };
 
@@ -56,6 +56,7 @@ export function nowTime() {
 }
 
 export function formatMsg(txt) {
+  if (!txt) return '';
   let t = txt
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/__(.*?)__/g, '<strong>$1</strong>')
