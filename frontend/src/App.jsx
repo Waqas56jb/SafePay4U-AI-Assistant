@@ -49,7 +49,8 @@ const App = () => {
       const validHistory = history.filter(m => m.content && m.content.trim() !== '');
       validHistory.push({ role: 'user', content: text });
 
-      const res = await fetch('/api/chat', {
+      const API_BASE = 'https://safe-pay4-u-ai-assistant-1p9c.vercel.app';
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: validHistory, sessionId })

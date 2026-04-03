@@ -35,9 +35,10 @@ const LeadForm = ({ onClose, onSuccess, sessionId }) => {
     }
 
     setIsSubmitting(true);
+    const API_BASE = 'https://safe-pay4-u-ai-assistant-1p9c.vercel.app';
 
     try {
-      const res = await fetch('/api/lead', {
+      const res = await fetch(`${API_BASE}/api/lead`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, sessionId })
