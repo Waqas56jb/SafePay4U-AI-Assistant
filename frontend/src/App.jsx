@@ -15,6 +15,7 @@ const App = () => {
   const [showLeadModal, setShowLeadModal] = useState(false);
   const [langBadge, setLangBadge] = useState('🌐 AUTO');
   const [sessionId] = useState('sp4u_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9));
+  const [showHome, setShowHome] = useState(false);
 
   const messagesEndRef = useRef(null);
 
@@ -31,6 +32,7 @@ const App = () => {
     if (!text || isLoading) return;
 
     setIsLoading(true);
+    setShowHome(false);
     setInputText('');
 
     // Language detection logic
@@ -95,10 +97,11 @@ const App = () => {
   const clearChat = () => {
     setMessages([]);
     setLangBadge('🌐 AUTO');
+    setShowHome(false);
   };
 
   return (
-    <div className="app-container" style={{ display: 'flex', width: '100%', height: '100vh' }}>
+    <div className="app-container" style={{ display: 'flex', width: '100%', height: '100%', minHeight: '100dvh' }}>
       <Sidebar 
         onSendChip={(text) => sendMessage(text)} 
         onOpenFeeCalculator={() => setShowFeePanel(true)}
@@ -108,7 +111,10 @@ const App = () => {
       <main className="main">
         <ChatHeader 
           langBadge={langBadge} 
-          onClearChat={clearChat} 
+          onClearChat={clearChat}
+          hasMessages={messages.length > 0}
+          showHome={showHome}
+          onGoHome={() => setShowHome(true)}
         />
         
         <QuickChips 
@@ -120,10 +126,12 @@ const App = () => {
         <MessagesContainer 
           messages={messages} 
           isLoading={isLoading}
-          onSendChip={(text) => sendMessage(text)}
+          onSendChip={(text) => { setShowHome(false); sendMessage(text); }}
           onOpenFeeCalculator={() => setShowFeePanel(true)}
           onOpenLeadModal={() => setShowLeadModal(true)}
           messagesEndRef={messagesEndRef}
+          showHome={showHome}
+          onContinue={() => setShowHome(false)}
         />
         
         <ChatInput 

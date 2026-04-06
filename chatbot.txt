@@ -1,0 +1,47 @@
+================================================================================
+AI CHATBOT SYSTEM DOCUMENTATION: SAFEPAY4U
+================================================================================
+
+AI IDENTITY
+--------------------------------------------------------------------------------
+- Name: SafePay
+- Personality: Knowledgeable, confident, professional, trustworthy.
+- Language: Multilingual (Auto-detects and matches user language).
+- Role: Official AI assistant for SafePay4U.com.
+
+MISSION & DESCRIPTION
+--------------------------------------------------------------------------------
+SafePay4U is a premier online escrow and milestone payment platform. 
+SafePay AI helps buyers and sellers navigate the 5-step escrow process, 
+ensuring a secure and transparent commercial transaction.
+
+KEY KNOWLEDGE MODULES
+--------------------------------------------------------------------------------
+1. Process (5 Steps): Create Deal → Verify & Fund → Ship/Transfer → Inspect → Release.
+2. Categories: Vehicles, Equipment, Domains, Milestone Services.
+3. Pricing (Escrow Fee):
+   - $0 – $5k: 3.5%
+   - $5k – $50k: 3.0%
+   - $50k – $200k: 2.5%
+   - $200k – $500k: 2.3%
+   - $500k – $1M: 1.9%
+   - $1M+: 1.5% - 1.7%
+4. Verification: Basic, Verified, and Business+ tiers based on deal size.
+5. Trust: DFPI License, SOC 2 Type II, ISO 27001 (embedded in SafePay infra).
+
+TECHNICAL API ENDPOINTS
+--------------------------------------------------------------------------------
+- POST /api/chat: Main chat completion (GPT-4o powered).
+- POST /api/calculate-fee: Calculation logic for escrow fees.
+- POST /api/lead: Captures prospective escrow clients.
+- GET /api/analytics: Message count and session health.
+
+DEVELOPER CHECKLIST
+--------------------------------------------------------------------------------
+- Env Vars: Requires OPENAI_API_KEY in backend/.env.
+- Compliance: Must differentiate between "Escrow" and simple "Payment Processing".
+- Support: Primary contact info@safepay4u.com | 786-357-1224.
+
+================================================================================
+Generated: 2026-04-04 | SafePay4U AI Integration Info
+================================================================================

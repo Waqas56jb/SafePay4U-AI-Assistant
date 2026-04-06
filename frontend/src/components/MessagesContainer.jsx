@@ -39,14 +39,30 @@ const formatMessage = (text) => {
   return processedLines.join('<br>');
 };
 
-const MessagesContainer = ({ messages, isLoading, onSendChip, onOpenFeeCalculator, messagesEndRef }) => {
+function BrandMark({ className, size = 40 }) {
+  return (
+    <img
+      src="/logo.png"
+      alt=""
+      className={className}
+      width={size}
+      height={size}
+      decoding="async"
+    />
+  );
+}
+
+const MessagesContainer = ({ messages, isLoading, onSendChip, onOpenFeeCalculator, messagesEndRef, showHome, onContinue }) => {
   const hasMessages = messages.length > 0;
+  const showWelcome = !hasMessages || showHome;
 
   return (
     <div className="messages-container" id="messagesContainer">
-      {!hasMessages && (
+      {showWelcome && (
         <div className="welcome-screen" id="welcomeScreen">
-          <div className="welcome-avatar">🛡️</div>
+          <div className="welcome-avatar">
+            <BrandMark className="welcome-logo-img" size={112} />
+          </div>
           <h2>Hi, I'm SafePay AI</h2>
           <p>
             Your intelligent escrow assistant for <strong>SafePay4U</strong> — the trusted neutral escrow platform
@@ -63,13 +79,30 @@ const MessagesContainer = ({ messages, isLoading, onSendChip, onOpenFeeCalculato
             <div className="welcome-chip" onClick={() => onSendChip('¿Cómo funciona el escrow con SafePay4U?')}>🇪🇸 Español</div>
             <div className="welcome-chip" onClick={() => onSendChip('Comment fonctionne SafePay4U?')}>🇫🇷 Français</div>
           </div>
+          {hasMessages && showHome && (
+            <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '8px', paddingBottom: '16px' }}>
+              <button
+                type="button"
+                onClick={onContinue}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
+                  background: 'linear-gradient(135deg,#00b4d8,#0077b6)',
+                  border: 'none', borderRadius: '10px', padding: '11px 22px',
+                  fontSize: '14px', fontWeight: '600', color: '#fff', cursor: 'pointer',
+                  boxShadow: '0 4px 14px rgba(0,119,182,0.3)', transition: 'all 0.2s'
+                }}
+              >
+                💬 Continue Conversation →
+              </button>
+            </div>
+          )}
         </div>
       )}
 
-      {messages.map((msg, idx) => (
+      {!showWelcome && messages.map((msg, idx) => (
         <div key={idx} className={`message ${msg.role === 'user' ? 'user' : 'bot'}`}>
           <div className={`msg-avatar ${msg.role === 'user' ? 'user-av' : 'bot'}`}>
-             {msg.role === 'user' ? '👤' : '🛡️'}
+            {msg.role === 'user' ? '👤' : <BrandMark className="msg-bot-logo" size={64} />}
           </div>
           <div className="msg-content">
             <div 
@@ -89,7 +122,9 @@ const MessagesContainer = ({ messages, isLoading, onSendChip, onOpenFeeCalculato
 
       {isLoading && (
         <div className="message bot" id="typingIndicator">
-          <div className="msg-avatar bot">🛡️</div>
+          <div className="msg-avatar bot">
+            <BrandMark className="msg-bot-logo" size={64} />
+          </div>
           <div className="msg-content">
             <div className="typing-indicator">
               <div className="typing-dot"></div>

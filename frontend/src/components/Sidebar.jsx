@@ -5,7 +5,9 @@ const Sidebar = ({ onSendChip, onOpenFeeCalculator, onOpenLeadModal }) => {
     <aside className="sidebar">
       <div className="sidebar-logo">
         <div className="logo-mark">
-          <div className="logo-icon">🛡️</div>
+          <div className="logo-icon">
+            <img src="/logo.png" alt="" className="brand-logo-img" width={40} height={40} decoding="async" />
+          </div>
           <div>
             <div className="logo-text">SafePay4U</div>
             <div className="logo-sub">Secure Escrow Platform</div>
