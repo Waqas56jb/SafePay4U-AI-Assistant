@@ -1,11 +1,16 @@
 import React from 'react';
 
-const ChatHeader = ({ langBadge, onClearChat, hasMessages, showHome, onGoHome }) => {
+const ChatHeader = ({ langBadge, onClearChat, hasMessages, showHome, onGoHome, onContinueChat }) => {
   return (
     <header className="chat-header">
       <div className="chat-header-left">
+        {hasMessages && showHome && (
+          <button type="button" className="back-home-btn" onClick={onContinueChat} title="Back to conversation">
+            ← Back
+          </button>
+        )}
         {hasMessages && !showHome && (
-          <button type="button" className="back-home-btn" onClick={onGoHome} title="Back to Home">
+          <button type="button" className="back-home-btn back-home-btn--home" onClick={onGoHome} title="Home">
             ← Home
           </button>
         )}

@@ -115,6 +115,7 @@ const App = () => {
           hasMessages={messages.length > 0}
           showHome={showHome}
           onGoHome={() => setShowHome(true)}
+          onContinueChat={() => setShowHome(false)}
         />
         
         <QuickChips 
