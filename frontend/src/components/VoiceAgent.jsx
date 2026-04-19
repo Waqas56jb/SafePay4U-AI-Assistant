@@ -5,8 +5,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 
-/* SafePay4U dev proxy already points to production, empty = same-origin/proxy */
-const API_BASE = (import.meta.env.VITE_API_BASE_URL?.trim() || '').replace(/\/$/, '');
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || 'https://safe-pay4-u-ai-assistant-e8rl.vercel.app').replace(/\/$/, '');
 const REALTIME_MODEL = 'gpt-4o-realtime-preview-2024-12-17';
 
 function micErrorMsg(err) {
