@@ -140,6 +140,13 @@ const App = () => {
           setInputText={setInputText}
           onSendMessage={() => sendMessage()}
           isLoading={isLoading}
+          onVoiceTranscript={(transcript) => {
+            const time = getTime();
+            const sep = { role: 'bot', content: '🎙️ Voice conversation', time, isVoiceSep: true };
+            const msgs = transcript.map((m) => ({ role: m.role === 'assistant' ? 'bot' : 'user', content: m.text, time, fromVoice: true }));
+            setMessages(prev => [...prev, sep, ...msgs]);
+            setShowHome(false);
+          }}
         />
       </main>
 
